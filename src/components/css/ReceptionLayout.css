@@ -1,0 +1,240 @@
+/* ====== LAYOUT CONTAINER ====== */
+.reception-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ====== BODY AREA (SIDEBAR + MAIN CONTENT) ====== */
+.reception-body {
+  display: flex;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* ====== SIDEBAR ====== */
+.reception-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background: white;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  transform: translateX(-100%); /* 🚫 Hidden by default */
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+/* ✅ Sidebar visible when "open" */
+.reception-sidebar.open {
+  transform: translateX(0);
+}
+
+/* ====== MAIN CONTENT ====== */
+.reception-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f8fafc;
+  transition: margin-left 0.3s ease;
+}
+
+/* ====== HAMBURGER BUTTON (THREE LINES) ====== */
+.menuButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: color 0.2s;
+}
+
+.menuButton:hover {
+  color: #60a5fa;
+}
+
+/* ====== OPTIONAL MOBILE OVERLAY ====== */
+@media (max-width: 768px) {
+  .reception-sidebar {
+    width: 200px;
+  }
+
+  .reception-content {
+    padding: 15px;
+  }
+}
+
+/* ===== LAYOUT WRAPPER ===== */
+.reception-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ===== BODY (SIDEBAR + CONTENT) ===== */
+.reception-body {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+/* ===== SIDEBAR ===== */
+.reception-sidebar {
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  height: 100%;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  transform: translateX(-100%); /* Hidden by default */
+  position: relative;
+  z-index: 100;
+}
+
+/* Sidebar visible */
+.reception-sidebar.open {
+  transform: translateX(0);
+}
+
+/* ===== MAIN CONTENT ===== */
+.reception-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+/* ===== HAMBURGER BUTTON ===== */
+.menuButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: color 0.2s;
+}
+
+.menuButton:hover {
+  color: #60a5fa;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .reception-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 220px;
+    z-index: 1500;
+  }
+
+  .reception-content {
+    padding: 15px;
+  }
+}
+
+/* ====== LAYOUT ====== */
+.reception-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ====== HEADER ====== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ====== BODY ====== */
+.reception-body {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  background: #f8fafc;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ====== SIDEBAR ====== */
+.reception-sidebar {
+  position: fixed;
+  top: 60px; /* adjust if your header height is different */
+  left: 0;
+  width: 240px;
+  height: calc(100vh - 60px);
+  background: white;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+/* Sidebar open */
+.reception-sidebar.open {
+  transform: translateX(0);
+}
+
+/* ====== MAIN CONTENT ====== */
+.reception-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  margin-left: 0;
+}
+
+/* ✅ When sidebar opens, content shifts right */
+.reception-content.shifted {
+  margin-left: 240px; /* same as sidebar width */
+  width: calc(100% - 240px);
+}
+
+/* ====== HAMBURGER BUTTON ====== */
+.menuButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: color 0.2s;
+}
+
+.menuButton:hover {
+  color: #60a5fa;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .reception-sidebar {
+    top: 0;
+    height: 100%;
+    width: 220px;
+  }
+
+  .reception-content.shifted {
+    margin-left: 0; /* on mobile, don't push content */
+    width: 100%;
+  }
+}

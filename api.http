@@ -1,0 +1,28 @@
+
+
+<vscode_codeblock_uri>file:///c%3A/Users/Lenovo/Downloads/WebDevelopment/healthcare_system/api.http</vscode_codeblock_uri>### JSON POST (simple test)
+POST http://localhost:9090/api/doctors
+Content-Type: application/json
+
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john@example.com"
+}
+
+GET  http://localhost:9090/api/doctors
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary123456
+
+------WebKitFormBoundary123456
+Content-Disposition: form-data; name="first_name"
+
+John
+------WebKitFormBoundary123456
+Content-Disposition: form-data; name="last_name"
+
+Doe
+------WebKitFormBoundary123456
+Content-Disposition: form-data; name="image"; filename="photo.jpg"
+Content-Type: image/jpeg
+
+< ./testfiles/photo.jpg

@@ -1,0 +1,102 @@
+.recep-dashboard {
+  padding: 20px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0b63c5;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* ===== CARDS ===== */
+.recep-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.recep-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  border-left: 8px solid #1976d2;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.recep-card.active {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.recep-card p {
+  font-size: 16px;
+  color: #444;
+}
+
+.recep-card h3 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.completed { color: #27ae60; }
+.pending { color: #e67e22; }
+.urgent { color: #e63946; }
+
+/* ===== TABLE ===== */
+.recep-table-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.table-header {
+  font-size: 18px;
+  font-weight: 700;
+  color: #145da0;
+  margin-bottom: 15px;
+}
+
+.recep-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recep-table th {
+  background: #e8f4ff;
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.recep-table td {
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.badge.Pending { background: #e67e22; }
+.badge.Checked { background: #2ecc71; }
+.badge.urgent { background: #e63946; }
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}

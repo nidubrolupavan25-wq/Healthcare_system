@@ -1,0 +1,94 @@
+/* WRAPPER */
+.progress-wrapper {
+  padding: 30px 0;
+  background: linear-gradient(135deg, #5d59ad, #4441a5);
+  text-align: center;
+  backdrop-filter: blur(6px);  
+}
+/* STAGES */
+.progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 55px;
+  animation: fadeIn 0.9s ease;
+  
+}
+/* STEP BLOCK */
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+/* CIRCLE (glass + border glow) */
+.step-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: rgba(228, 223, 223, 0.884);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(229, 230, 241, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  transition: 0.4s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: scale(0.92);
+}
+/* ICON */
+.step-icon {
+  font-size: 32px;
+  transition: 0.3s ease;
+}
+.step-circle.active .step-icon {
+  transform: scale(1.35);
+}
+/* LABEL */
+.step-label {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #0d204d;
+  font-weight: 700;
+  text-align: center;
+  width: 120px;
+  animation: fadeInUp 0.6s ease;
+}
+/* CONNECTING LINE */
+.step-line {
+  position: absolute;
+  top: 32px;
+  right: -95px;
+  width: 95px;
+  height: 4px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 10px;
+  transition: 0.5s ease;
+}
+.step-line.active {
+  background: linear-gradient(90deg, #4b55ff, #00baff);
+  box-shadow: 0 0 10px rgba(75, 85, 255, 0.5);
+  animation: growLine 0.5s ease;
+}
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop {
+  0% { transform: scale(0.75); }
+  100% { transform: scale(1.18); }
+}
+@keyframes growLine {
+  from { width: 0; }
+  to { width: 95px; }
+}

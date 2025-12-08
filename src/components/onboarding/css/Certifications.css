@@ -1,0 +1,157 @@
+/* ------------------ MAIN CONTAINER ------------------ */
+.images-container {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.07);
+  border: 1px solid #eef1f7;
+  animation: fadeIn 0.5s ease;
+  max-width: 1400px;
+  margin: 2% auto; /* CENTER FIX */
+}
+
+/* Small description text */
+.small-info {
+  color: #55627a;
+  margin-bottom: 22px;
+  font-size: 15px;
+}
+
+/* Section title */
+.form-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4c1d95;
+  text-align: center;
+}
+
+/* ------------------ GRID LAYOUT (REAL FIX) ------------------ */
+.image-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* 2 CARDS PER ROW */
+  gap: 28px !important;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* ------------------ CARD BOX ------------------ */
+.image-card {
+  background: #fdfdfd;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #e4e6ed;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.image-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.09);
+}
+
+/* ------------------ LABEL & REQUIRED ------------------ */
+.image-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.required-tag {
+  background: #e11d48;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: #fff;
+  border-radius: 6px;
+}
+
+/* ------------------ DOCUMENT PREVIEW ------------------ */
+.image-placeholder {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #eef1f7, #d9dce2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 14px;
+  border: 1px solid #e4e6ed;
+  margin-bottom: 12px;
+}
+
+/* File display */
+.file-box {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  background: #f2f4f7;
+  border: 1px solid #e4e6ed;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.file-icon {
+  font-size: 24px;
+}
+
+/* ------------------ UPLOAD BUTTON ------------------ */
+.upload-btn {
+  width: 100%;
+  padding: 12px;
+  background: #4c1d95;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: #3a1670;
+}
+
+/* ------------------ NAV BUTTONS ------------------ */
+.nav-buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-prev,
+.btn-next {
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-prev {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.btn-next {
+  background: #4c1d95;
+  color: #fff;
+}
+
+.btn-next:hover {
+  background: #3a1670;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

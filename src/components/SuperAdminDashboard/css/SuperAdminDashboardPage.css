@@ -1,0 +1,526 @@
+/* SuperAdminDashboardPage.css - dashboard page content */
+
+.superadmin-dashboard-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-bottom: 40px;
+}
+
+.superadmin-dashboard-title {
+  font-size: 22px;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+/* Metrics grid */
+.superadmin-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.superadmin-metric-card {
+  background: white;
+  border: 1px solid #eef2f8;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 4px 18px rgba(12, 18, 29, 0.03);
+}
+
+.superadmin-metric-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.superadmin-metric-label {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.superadmin-metric-value {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* pending card specifics */
+.superadmin-pending-card .superadmin-pending-details {
+  display: flex;
+  gap: 12px;
+  margin: 6px 0 8px;
+}
+
+.superadmin-pending-item span {
+  display: block;
+  color: #475569;
+  font-size: 13px;
+}
+
+.superadmin-view-pending-btn {
+  background: #0a4fa3;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* charts */
+.superadmin-charts-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+}
+
+.superadmin-chart-card {
+  background: white;
+  border: 1px solid #eef2f8;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 4px 18px rgba(12, 18, 29, 0.03);
+}
+
+/* inside small charts */
+.superadmin-small-chart { padding: 10px; }
+
+/* charts grid responsive */
+@media (max-width: 980px) {
+  .superadmin-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .superadmin-charts-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .superadmin-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .superadmin-dashboard-title {
+    font-size: 18px;
+  }
+}
+/* src/components/SuperAdminDashboard/css/SuperAdminDashboardPage.css */
+
+/* DASHBOARD PAGE */
+.superadmin-dashboard-page {
+  padding: 20px;
+}
+
+.superadmin-dashboard-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 24px;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-dashboard-title {
+  color: #f9fafb;
+}
+
+/* METRICS GRID */
+.superadmin-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.superadmin-metric-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.superadmin-dashboard-shell.dark .superadmin-metric-card {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+.superadmin-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.superadmin-metric-left {
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(10, 79, 163, 0.1);
+  color: #0a4fa3;
+}
+
+.superadmin-metric-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.superadmin-metric-label {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-metric-label {
+  color: #9ca3af;
+}
+
+.superadmin-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-metric-value {
+  color: #f9fafb;
+}
+
+.superadmin-metric-mini {
+  margin-top: auto;
+}
+
+/* PENDING CARD */
+.superadmin-pending-card .superadmin-metric-left {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.superadmin-pending-card .superadmin-metric-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.superadmin-pending-list {
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.superadmin-pending-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 6px 0;
+}
+
+.superadmin-pending-item span {
+  color: #6b7280;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-pending-item span {
+  color: #9ca3af;
+}
+
+.superadmin-pending-item strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-pending-item strong {
+  color: #f9fafb;
+}
+
+.superadmin-pending-item.superadmin-total {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #e5e7eb;
+  font-weight: 700;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-pending-item.superadmin-total {
+  border-top: 1px solid #374151;
+}
+
+.superadmin-pending-item.superadmin-total strong {
+  color: #0a4fa3;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-pending-item.superadmin-total strong {
+  color: #3b82f6;
+}
+
+/* BUTTONS */
+.superadmin-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.superadmin-btn.superadmin-btn-small {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.superadmin-btn.superadmin-btn-primary {
+  background: #0a4fa3;
+  color: white;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-btn.superadmin-btn-primary {
+  background: #3b82f6;
+}
+
+.superadmin-btn.superadmin-btn-primary:hover {
+  background: #1f7fff;
+  transform: translateY(-1px);
+}
+
+/* CHARTS SECTION */
+.superadmin-charts-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.superadmin-chart-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.superadmin-dashboard-shell.dark .superadmin-chart-card {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+.superadmin-chart-card:hover {
+  transform: translateY(-2px);
+}
+
+.superadmin-chart-card.superadmin-small {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.superadmin-chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-chart-title {
+  color: #f9fafb;
+}
+
+/* CHART BODY */
+.superadmin-chart-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CITY ROW */
+.superadmin-city-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.superadmin-city-label {
+  width: 100px;
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-city-label {
+  color: #f9fafb;
+}
+
+.superadmin-city-bar {
+  flex: 1;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-city-bar {
+  background: #374151;
+}
+
+.superadmin-city-bar > div {
+  height: 100%;
+  background: linear-gradient(90deg, #4db5ff, #0a4fa3);
+  border-radius: 8px;
+  transition: width 0.5s ease;
+}
+
+.superadmin-city-val {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-city-val {
+  color: #f9fafb;
+}
+
+/* X LABELS */
+.superadmin-xlabels {
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-xlabels {
+  color: #9ca3af;
+}
+
+/* TINY TEXT */
+.superadmin-tiny {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 4px 0;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-tiny {
+  color: #9ca3af;
+}
+
+/* MINI BAR CHART */
+.superadmin-mini-bar {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 30px;
+}
+
+.superadmin-mini-bar-col {
+  flex: 1;
+  min-height: 4px;
+  background: linear-gradient(180deg, #4db5ff, #0a4fa3);
+  border-radius: 3px 3px 0 0;
+}
+
+/* MINI LINE CHART */
+.superadmin-mini-line {
+  width: 100%;
+  height: 40px;
+  color: #0a4fa3;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-mini-line {
+  color: #3b82f6;
+}
+
+/* MINI DONUT CHART */
+.superadmin-mini-donut {
+  width: 60px;
+  height: 60px;
+}
+
+.superadmin-donut-slice.superadmin-slice-0 {
+  fill: #f59e0b;
+}
+
+.superadmin-donut-slice.superadmin-slice-1 {
+  fill: #0a4fa3;
+}
+
+.superadmin-donut-slice.superadmin-slice-2 {
+  fill: #ef4444;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-donut-slice.superadmin-slice-0 {
+  fill: #fbbf24;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-donut-slice.superadmin-slice-1 {
+  fill: #3b82f6;
+}
+
+.superadmin-dashboard-shell.dark .superadmin-donut-slice.superadmin-slice-2 {
+  fill: #ef4444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .superadmin-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .superadmin-charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .superadmin-metrics-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .superadmin-dashboard-page {
+    padding: 15px;
+  }
+  
+  .superadmin-chart-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .superadmin-dashboard-page {
+    padding: 10px;
+  }
+  
+  .superadmin-dashboard-title {
+    font-size: 20px;
+  }
+  
+  .superadmin-metric-card {
+    padding: 15px;
+  }
+  
+  .superadmin-metric-left {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+  
+  .superadmin-metric-value {
+    font-size: 24px;
+  }
+}

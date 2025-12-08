@@ -1,0 +1,94 @@
+/* SuperAdminHeader.css */
+.superadmin-header-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 16px;
+  gap: 12px;
+}
+
+.superadmin-header-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.superadmin-header-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-right: auto;
+  padding-left: 8px;
+}
+
+/* right actions */
+.superadmin-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.superadmin-header-theme,
+.superadmin-header-notification {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.superadmin-header-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: white;
+  line-height: 1;
+}
+
+.superadmin-header-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.superadmin-header-info {
+  text-align: left;
+  display: none; /* hide text on very small widths - visible on larger screens */
+}
+
+.superadmin-header-name {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.superadmin-header-role {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.superadmin-header-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(15,23,42,0.06);
+}
+
+@media (min-width: 700px) {
+  .superadmin-header-info { display: block; }
+}

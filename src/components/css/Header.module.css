@@ -1,0 +1,40 @@
+.header {
+  background: linear-gradient(135deg, #1e40af, #1d4ed8);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(30,64,175,.2);
+}
+.left { display: flex; align-items: center; gap: 1rem; }
+.logo { display: flex; align-items: center; gap: 1rem; }
+.logo i { font-size: 2.5rem; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+.logoText h1 { margin:0; font-size:1.5rem; }
+.logoText p { font-size:0.8rem; opacity:.9; }
+
+.right .stats { display:flex; gap:1.5rem; }
+.stat { display:flex; align-items:center; gap:.8rem;
+       background:rgba(255,255,255,.15); padding:.6rem 1rem; border-radius:12px; }
+.stat i { font-size:1.3rem; }
+.stat p { margin:0; font-size:.85rem; }
+.stat p:last-child { font-weight:600; }
+
+.darkBtn { background:none; border:none; color:white; font-size:1.2rem; cursor:pointer; }
+.menuButton {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: color 0.2s;
+}
+
+.menuButton:hover {
+  color: #007bff;
+}

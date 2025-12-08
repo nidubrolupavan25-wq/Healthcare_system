@@ -1,0 +1,146 @@
+/* ============================= */
+/*       MODERN FIXED SIDEBAR    */
+/* ============================= */
+
+.medx-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 230px;
+  height: 100vh;
+  background: #023e8a;
+  background: linear-gradient(180deg, #023e8a, #035aa6);
+  padding: 25px 20px;
+  color: #ffffff;
+  box-shadow: 3px 0 12px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.medx-sidebar-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.medx-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.medx-sidebar-menu li {
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.25s;
+}
+
+.medx-sidebar-menu li:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateX(4px);
+}
+
+/* Active Menu */
+.medx-sidebar-menu li.active {
+  background: #ffffff;
+  color: #023e8a;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.4);
+}
+
+/* Footer */
+.medx-sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.medx-sidebar-footer:hover {
+  background: rgba(255,255,255,0.35);
+}
+.medx-sidebar-footer span {
+  font-weight: 500;
+}
+
+
+.medx-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0a2a43, #031d2d);
+  color: #fff;
+  padding: 20px 15px;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  color: #ff6b6b;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: auto;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: rgba(231, 76, 60, 0.25);
+  border-color: rgba(231, 76, 60, 0.5);
+}
+/* ensure sidebar elements are on top and clickable */
+.medx-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  z-index: 1100; /* ensure above overlays */
+  pointer-events: auto; /* ensure it receives clicks */
+}
+
+/* make logout button obvious and clickable */
+.medx-sidebar .logout-btn {
+  width: calc(100% - 30px);
+  margin: 16px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: rgba(231,76,60,0.12);
+  color: #fff;
+  font-weight: 600;
+  z-index: 1200;
+  pointer-events: auto;
+}

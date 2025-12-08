@@ -1,0 +1,39 @@
+/* src/components/LabManagement/LabPatientHistory.css */
+.lab-search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.lab-btn-primary {
+  background: #3498db;
+  color: white;
+}
+
+.lab-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.lab-history-table th {
+  background: #3498db;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.lab-history-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.lab-history-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.lab-view-file {
+  color: #3498db;
+  text-decoration: underline;
+  cursor: pointer;
+}

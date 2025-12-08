@@ -1,0 +1,75 @@
+/* src/components/LabManagement/LabResultUpload.css */
+.lab-input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.lab-file-upload {
+  border: 2px dashed #3498db;
+  padding: 40px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #f8fbff;
+  transition: 0.3s;
+  margin: 20px 0;
+}
+
+.lab-file-upload:hover {
+  background: #e3f2fd;
+}
+
+.lab-file-preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.lab-file-preview img,
+.lab-file-preview iframe {
+  max-width: 100%;
+  max-height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.lab-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.lab-btn-success {
+  background: #27ae60;
+  color: white;
+}
+
+.lab-alert {
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.lab-alert.show {
+  display: block;
+}
+
+.lab-alert-success {
+  background: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.lab-alert-error {
+  background: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}

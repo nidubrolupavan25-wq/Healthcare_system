@@ -1,0 +1,145 @@
+.patient-form-container {
+  max-width: 55%;
+  margin: 60px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 50px 60px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.patient-form-title {
+  text-align: center;
+  color: #004085;
+  margin-bottom: 35px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.patient-type-normal {
+  color: #2563eb;
+}
+
+.patient-type-emergency {
+  color: #dc2626;
+}
+
+.patient-type-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 35px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.patient-type-select input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+}
+
+.patient-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 40px;
+  margin-bottom: 25px;
+}
+
+.patient-form-container input,
+.patient-form-container select,
+.patient-form-container textarea {
+  width: 100%;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 17px;
+  background: #f8fafc;
+  box-sizing: border-box;
+  transition: 0.25s ease;
+}
+
+.patient-form-container textarea {
+  grid-column: span 2;
+  height: 140px;
+  resize: none;
+}
+
+.patient-form-container input:focus,
+.patient-form-container select:focus,
+.patient-form-container textarea:focus {
+  border-color: #007bff;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.patient-emergency-section {
+  background: #fff6f6;
+  border: 1.8px solid #ffc9c9;
+  padding: 35px;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+
+.patient-emergency-section h3 {
+  margin-bottom: 20px;
+  color: #b91c1c;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.patient-btn {
+  width: 100%;
+  height: 65px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 0.25s ease;
+}
+
+.patient-btn-normal {
+  background: #007bff;
+}
+
+.patient-btn-normal:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.patient-btn-emergency {
+  background: #dc2626;
+}
+
+.patient-btn-emergency:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .patient-form-container {
+    padding: 30px 25px;
+  }
+
+  .patient-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-form-container input,
+  .patient-form-container select {
+    height: 60px;
+  }
+
+  .patient-form-container textarea {
+    height: 120px;
+  }
+
+  .patient-btn {
+    height: 60px;
+  }
+}
