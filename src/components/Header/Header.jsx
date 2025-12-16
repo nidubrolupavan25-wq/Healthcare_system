@@ -1,50 +1,72 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
-const Header = ({ toggleSidebar }) => {
-  const { user } = useContext(UserContext);
+const Header = ({ userName = "Admin", userRole = "Administrator", onLogout = () => {} }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSettings = () => {
+    navigate('/settings');
+    setShowDropdown(false);
+  };
+
+  const handleLogout = () => {
+    onLogout();
+    setShowDropdown(false);
+  };
 
   return (
     <header className="hc-header">
-      {/* Left: Toggle + Welcome */}
+      {/* Left: Hospital Logo/Name */}
       <div className="hc-header-left">
-        <button className="hc-toggle-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
-          <i className="fas fa-bars"></i>
-        </button>
-        <h2 className="hc-welcome-text">
-          Welcome <span>{user?.name || "Admin"}</span>
-        </h2>
+        <h2 className="hospital-name">🏥 HealthCare System</h2>
       </div>
 
-      {/* Right: Notification + Profile */}
+      {/* Right: User Profile & Actions */}
       <div className="hc-header-right">
-        {/* Notification */}
-        <button className="hc-notif-btn" aria-label="Notifications">
-          <i className="fas fa-bell"></i>
+        {/* Notifications */}
+        <button className="hc-notif-btn" aria-label="Notifications" title="Notifications">
+          <span className="notif-icon">🔔</span>
           <span className="hc-notif-badge">3</span>
         </button>
 
-        {/* Profile */}
+        {/* Settings */}
+        <button className="hc-settings-btn" aria-label="Settings" title="Settings" onClick={handleSettings}>
+          <span className="settings-icon">⚙️</span>
+        </button>
+
+        {/* User Profile Dropdown */}
         <div className="hc-user-profile">
-          <img
-            src={
-              user?.image
-                ? user.image.startsWith("http")
-                  ? user.image
-                  : `data:image/jpeg;base64,${user.image}`
-                : "https://via.placeholder.com/42"
-            }
-            alt="User Avatar"
-            className="hc-user-avatar"
-            onError={(e) => {
-              e.target.src = "https://via.placeholder.com/42";
-            }}
-          />
-          <div className="hc-user-details">
-            <span className="hc-user-name">{user?.name || "Admin"}</span>
-            <span className="hc-user-role">{user?.department || "Staff"}</span>
-          </div>
+          <button 
+            className="profile-btn"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <div className="user-avatar">
+              {userName.charAt(0).toUpperCase()}
+            </div>
+            <div className="user-details">
+              <span className="user-name">{userName}</span>
+              <span className="user-role">{userRole}</span>
+            </div>
+            <span className="dropdown-arrow">▼</span>
+          </button>
+
+          {/* Dropdown Menu */}
+          {showDropdown && (
+            <div className="dropdown-menu">
+              <div className="dropdown-item">
+                <span>👤 Profile</span>
+              </div>
+              <div className="dropdown-item" onClick={handleSettings}>
+                <span>⚙️ Settings</span>
+              </div>
+              <hr className="dropdown-divider" />
+              <div className="dropdown-item logout" onClick={handleLogout}>
+                <span>🚪 Logout</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>

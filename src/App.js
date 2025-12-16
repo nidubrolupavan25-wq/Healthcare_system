@@ -5,16 +5,15 @@ import {
   Route,
   Navigate,
   Outlet,
-  BrowserRouter as Router,
   useLocation,
 } from "react-router-dom";
 import "./App.css";
-import { UserProvider } from "./context/UserContext";
 
 // ----- PAGES -----
 import LoginPage from './components/Login/LoginPage';
 
 // ----- ADMIN PAGES -----
+import DashboardImproved from "./components/DashboardImproved";
 import Dashboard from "./components/Dashboard";
 import DoctorsList from "./components/Doctors/DoctorsList";
 import AddDoctor from "./components/Doctors/AddDoctor";
@@ -250,9 +249,9 @@ function App() {
         <Route 
           path="/dashboard" 
           element={
-            <AdminLayout>
-              <Dashboard />
-            </AdminLayout>
+            <ProtectedRoute>
+              <DashboardImproved />
+            </ProtectedRoute>
           } 
         />
         
@@ -416,13 +415,4 @@ function App() {
   );
 }
 
-// ---- Wrapper ----
-export default function AppWrapper() {
-  return (
-    <UserProvider>
-      <Router>
-        <App />
-      </Router>
-    </UserProvider>
-  );
-}
+export default App;
