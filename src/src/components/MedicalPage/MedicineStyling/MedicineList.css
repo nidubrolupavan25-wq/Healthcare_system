@@ -1,0 +1,77 @@
+.medicine-section {
+  padding: 25px 20px;
+  background-color: white;
+  margin-top: 15px;
+}
+
+.medicine-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Medicine Grid */
+.medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+/* Medicine Card */
+.medicine-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.medicine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Image */
+.medicine-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Name */
+.medicine-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  min-height: 40px;
+  margin-bottom: 10px;
+}
+
+/* Price */
+.medicine-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00695c;
+  margin-bottom: 10px;
+}
+
+/* Add Button */
+.medicine-add-btn {
+  background-color: #00695c;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.medicine-add-btn:hover {
+  background-color: #00796b;
+}

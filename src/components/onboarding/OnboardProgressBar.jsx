@@ -1,47 +1,93 @@
 // src/components/onboarding/OnboardProgressBar.jsx
-
 import React from "react";
 import "./css/OnboardProgressBar.css";
-import { Building2, FileCheck, Image, Stethoscope, UserRound } from "lucide-react";
-
+import { 
+  Building2, 
+  FileCheck, 
+  Image as ImageIcon, 
+  Stethoscope, 
+  UserRound,
+  Check
+} from "lucide-react";
 
 const OnboardProgressBar = ({ currentStep }) => {
   const steps = [
-  { id: 1, label: "Details", icon: <Building2 size={22} /> },
-  { id: 2, label: "Certifications", icon: <FileCheck size={22} /> },
-  { id: 3, label: "Images", icon: <Image size={22} /> },
-  { id: 4, label: "Services", icon: <Stethoscope size={22} /> },
-  { id: 5, label: "Owner Details", icon: <UserRound size={22} /> },
-];
+    { 
+      id: 1, 
+      label: "Hospital Details", 
+      icon: <Building2 size={20} />,
+      description: "Basic Information"
+    },
+    { 
+      id: 2, 
+      label: "Certifications", 
+      icon: <FileCheck size={20} />,
+      description: "Licenses & Approvals"
+    },
+    { 
+      id: 3, 
+      label: "Images", 
+      icon: <ImageIcon size={20} />,
+      description: "Photos & Documents"
+    },
+    { 
+      id: 4, 
+      label: "Services", 
+      icon: <Stethoscope size={20} />,
+      description: "Specialties & Facilities"
+    },
+    { 
+      id: 5, 
+      label: "Owner Details", 
+      icon: <UserRound size={20} />,
+      description: "Management Information"
+    },
+  ];
 
   return (
     <div className="progress-wrapper">
-
-      {/* <h2 className="progress-title">Onboarding Progress</h2> */}
-
       <div className="progress-container">
-        {steps.map((step, index) => (
-          <div key={step.id} className="progress-step">
-
-            <div
-              className={`step-circle ${
-                currentStep >= step.id ? "active" : ""
-              }`}
-            >
-              <span className="step-icon">{step.icon}</span>
+        {steps.map((step, index) => {
+          const isActive = currentStep === step.id;
+          const isCompleted = currentStep > step.id;
+          
+          return (
+            <div key={step.id} className="progress-step">
+              {/* Step Circle */}
+              <div className={`step-circle-wrapper ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}>
+                <div className="step-circle">
+                  {isCompleted ? (
+                    <div className="completed-icon">
+                      <Check size={16} />
+                    </div>
+                  ) : (
+                    <div className="step-icon">
+                      {step.icon}
+                    </div>
+                  )}
+                </div>
+                
+                {/* Step Number */}
+                <div className="step-number">
+                  {step.id}
+                </div>
+              </div>
+              
+              {/* Step Info */}
+              <div className="step-info">
+                <p className="step-label">{step.label}</p>
+                <p className="step-description">{step.description}</p>
+              </div>
+              
+              {/* Connecting Line */}
+              {index < steps.length - 1 && (
+                <div className={`step-line ${isCompleted ? 'active' : ''}`}>
+                  <div className="line-fill" style={{ width: isCompleted ? '100%' : '0%' }}></div>
+                </div>
+              )}
             </div>
-
-            <p className="step-label">{step.label}</p>
-
-            {index < steps.length - 1 && (
-              <div
-                className={`step-line ${
-                  currentStep > step.id ? "active" : ""
-                }`}
-              ></div>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

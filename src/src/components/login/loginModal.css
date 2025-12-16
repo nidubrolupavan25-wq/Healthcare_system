@@ -1,0 +1,44 @@
+/* FULL SCREEN DARK BACKGROUND */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 99999;   /* 🔴 VERY IMPORTANT */
+}
+
+/* CENTER MODAL CARD */
+.modal-card {
+  background: #ffffff;
+  width: 420px;
+  padding: 30px;
+  border-radius: 14px;
+  position: relative;
+  animation: pop 0.25s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* CLOSE BUTTON */
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

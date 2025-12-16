@@ -1,0 +1,8 @@
+.services-nav {
+        justify-content: flex-start;
+        padding: 0;
+    }
+    .scroll-services-items {
+  display: flex;
+  gap: 1.5rem;
+}

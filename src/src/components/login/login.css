@@ -1,0 +1,41 @@
+.login-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-inner h2 {
+  margin-bottom: 4px;
+}
+
+.login-inner p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.login-inner input {
+  height: 42px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.login-btn {
+  margin-top: 10px;
+  height: 44px;
+  border-radius: 6px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #43a047;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+}

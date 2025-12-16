@@ -1,0 +1,192 @@
+/* ================= MAIN NAVBAR ================= */
+.navbar {
+  position: fixed;          /* ✅ FIX */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+   
+}
+
+.navbar.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.navbar-container {
+  max-width: 1300px;
+  margin: auto;
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+/* AVATAR */
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.avatar.small {
+  width: 34px;
+  height: 34px;
+}
+
+/* ================= MODULE NAVBAR ================= */
+.module-navbar {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1100;
+  border-bottom: 1px solid #eee;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.module-navbar.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.module-navbar-inner.full {
+  max-width: 1300px;
+  margin: auto;
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+
+/* LEFT */
+.module-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.module-logo {
+  width: 36px;
+}
+
+/* CENTER */
+.module-center {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.module-center span {
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* RIGHT */
+.module-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.about-link {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ================= DROPDOWN ================= */
+/* ===== GUEST DROPDOWN ===== */
+.guest-dropdown {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  width: 180px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  z-index: 2000;
+}
+
+/* TITLE */
+.guest-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+/* BUTTONS */
+.guest-btn {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.guest-btn.primary {
+  background: #4caf50;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.guest-btn.secondary {
+  background: #f1f1f1;
+  color: #333;
+}
+
+
+/* ================= SIDEBAR ================= */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 2000;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -360px;
+  width: 360px;
+  height: 100%;
+  background: #fff;
+  z-index: 2001;
+  transition: right 0.3s ease;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.page-wrapper {
+  padding-top: 64px;
+}
+

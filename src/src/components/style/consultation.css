@@ -1,0 +1,90 @@
+
+.consultation-btn:hover {
+    background: #3367D6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(66,133,244,0.3);
+}
+
+/* ===== Consultation Banner ===== */
+.consultation-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 0;
+}
+
+.banner-image {
+  width: 320px;
+  border-radius: 12px;
+}
+
+.consultation-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.consultation-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+.consultation-content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.consultation-btn {
+    background: #4285F4;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;}
+
+    
+/* Consultation Banner */
+.consultation-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5; /* optional background */
+    padding: 60px 20px;
+    overflow: hidden;
+}
+.banner-left,
+.banner-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+    .consultation-banner {
+        padding: 1.5rem;
+    }
+
+    .consultation-content h2 {
+        font-size: 18px;
+    }
+
+    .consultation-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+.consultation-content h2 {
+        font-size: 20px;
+    }
+.consultation-content {
+    z-index: 2;
+    text-align: center;
+}

@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Routes,
   Route,
@@ -11,9 +11,7 @@ import {
 import "./App.css";
 import { UserProvider } from "./context/UserContext";
 
-// ----- LAYOUTS -----
-import Sidebar from "./components/Sidebar/Sidebar";
-import Header from "./components/Header/Header";
+// ----- PAGES -----
 import LoginPage from './components/Login/LoginPage';
 
 // ----- ADMIN PAGES -----
@@ -31,7 +29,6 @@ import MedicinePage from "./components/Medicine/MedicinePage";
 import StaffManagement from "./components/Medicine/StaffManagement";
 import Reports from "./components/Sidebar/Reports";
 import Settings from "./components/Sidebar/Settings";
-import LabManagementMain from "./components/LabManagement/LabManagementMain";
 import LabManagement from "./components/LabManagement/LabManagement";
 
 // ----- RECEPTION MODULE -----
@@ -64,10 +61,14 @@ import ReviewSubmit from "./components/onboarding/jsx_files/ReviewSubmit";
 import BankDetailsForm from "./components/onboarding/jsx_files/BankDetailsForm";
 import Certifications from "./components/onboarding/jsx_files/Certifications";
 
+// ----- LAB MANAGEMENT -----
+import LabManagementMain from "./components/LabManagement/LabManagementMain";
+
 // ---- Role Check Helper ----
 const checkUserRole = () => {
   const userEmail = localStorage.getItem("userEmail");
   const userRole = localStorage.getItem("userRole");
+  const userData = localStorage.getItem("user");
   
   // Debug log
   console.log("Current User Auth:", { userEmail, userRole });
@@ -89,6 +90,7 @@ const checkUserRole = () => {
   return {
     email: userEmail,
     role: userRole,
+    userData: userData ? JSON.parse(userData) : null,
     normalizedRole: normalizedRole,
     isSuperAdmin: isSuperAdmin,
     isAuthenticated: !!userEmail
@@ -112,8 +114,8 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   }
   
   // If specific roles are required
-  if (allowedRoles.length > 0) {
-    const hasAccess = userAuth?.isSuperAdmin || allowedRoles.some(allowedRole => 
+  if (allowedRoles.length > 0 && !userAuth?.isSuperAdmin) {
+    const hasAccess = allowedRoles.some(allowedRole => 
       userAuth?.normalizedRole.includes(allowedRole.toLowerCase())
     );
     
@@ -125,27 +127,52 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   return children;
 };
 
-// ---- Admin Layout ----
-function AdminLayout({ sidebarOpen, toggleSidebar, children }) {
+// ---- Admin Layout (Without Sidebar) ----
+function AdminLayout({ children }) {
   const userAuth = checkUserRole();
+  const location = useLocation();
   
   // Super Admin should not see admin layout
-  if (userAuth?.isSuperAdmin) {
+  if (userAuth?.isSuperAdmin && !location.pathname.startsWith('/super-admin')) {
     return <Navigate to="/super-admin" replace />;
   }
   
   return (
     <ProtectedRoute>
       <div className="admin-layout">
-        <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-
-        <div className={`main-content ${sidebarOpen ? "shifted" : ""}`}>
-          <Header toggleSidebar={toggleSidebar} />
+        <div className="main-content">
           <div className="page-content">
             {children}
           </div>
         </div>
       </div>
+    </ProtectedRoute>
+  );
+}
+
+// ---- Reception Layout (With Protected Route) ----
+function ProtectedReceptionLayout({ children }) {
+  return (
+    <ProtectedRoute allowedRoles={['admin', 'receptionist', 'doctor']}>
+      <ReceptionLayout />
+    </ProtectedRoute>
+  );
+}
+
+// ---- Medical Dashboard Layout (With Protected Route) ----
+function ProtectedMedicalDashboard() {
+  return (
+    <ProtectedRoute allowedRoles={['admin', 'doctor', 'pharmacist']}>
+      <MedicalDashboard />
+    </ProtectedRoute>
+  );
+}
+
+// ---- Lab Management Layout (With Protected Route) ----
+function ProtectedLabManagement() {
+  return (
+    <ProtectedRoute allowedRoles={['admin', 'lab', 'technician']}>
+      <LabManagementMain />
     </ProtectedRoute>
   );
 }
@@ -175,10 +202,7 @@ const RoleBasedRedirect = () => {
 
 // ---- App Component ----
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [notification, setNotification] = useState({ message: "", type: "" });
-
-  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   const showNotification = (msg, type) => {
     setNotification({ message: msg, type });
@@ -212,110 +236,157 @@ function App() {
           <Route path="certification" element={<Certifications />} />
         </Route>
 
-        {/* SUPER ADMIN DASHBOARD - MUST BE BEFORE OTHER ROUTES */}
-        <Route path="/super-admin/*" element={
-          <SuperAdminProtectedRoute>
-            <SuperAdminDashboard />
-          </SuperAdminProtectedRoute>
-        } />
+        {/* SUPER ADMIN DASHBOARD */}
+        <Route 
+          path="/super-admin/*" 
+          element={
+            <SuperAdminProtectedRoute>
+              <SuperAdminDashboard />
+            </SuperAdminProtectedRoute>
+          } 
+        />
 
-        {/* ADMIN DASHBOARD ROUTES - Only for non-super admin */}
-        <Route path="/dashboard" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <Dashboard />
-          </AdminLayout>
-        } />
+        {/* ADMIN DASHBOARD ROUTES */}
+        <Route 
+          path="/dashboard" 
+          element={
+            <AdminLayout>
+              <Dashboard />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/doctors" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <DoctorsList showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/doctors" 
+          element={
+            <AdminLayout>
+              <DoctorsList showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/doctorregister" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <DoctorRegister showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/doctorregister" 
+          element={
+            <AdminLayout>
+              <DoctorRegister showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/doctors/add" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <AddDoctor showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/doctors/add" 
+          element={
+            <AdminLayout>
+              <AddDoctor showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/doctors/:id" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <DoctorView />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/doctors/:id" 
+          element={
+            <AdminLayout>
+              <DoctorView />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/patients" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <PatientsList showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/patients" 
+          element={
+            <AdminLayout>
+              <PatientsList showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/patients/:id" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <PatientView />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/patients/:id" 
+          element={
+            <AdminLayout>
+              <PatientView />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/patientregister" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <PatientRegister showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/patientregister" 
+          element={
+            <AdminLayout>
+              <PatientRegister showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/bookingpage" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <BookingPage showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/bookingpage" 
+          element={
+            <AdminLayout>
+              <BookingPage showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/medicines" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <MedicinePage showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/medicines" 
+          element={
+            <AdminLayout>
+              <MedicinePage showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/staffmanagement" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <StaffManagement showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/staffmanagement" 
+          element={
+            <AdminLayout>
+              <StaffManagement showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/appointments" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <Appointments />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/appointments" 
+          element={
+            <AdminLayout>
+              <Appointments />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/reports" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <Reports showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/reports" 
+          element={
+            <AdminLayout>
+              <Reports showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/labmanagement" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <LabManagement showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/labmanagement" 
+          element={
+            <AdminLayout>
+              <LabManagement showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
         
-        <Route path="/settings" element={
-          <AdminLayout sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar}>
-            <Settings showNotification={showNotification} />
-          </AdminLayout>
-        } />
+        <Route 
+          path="/settings" 
+          element={
+            <AdminLayout>
+              <Settings showNotification={showNotification} />
+            </AdminLayout>
+          } 
+        />
 
         {/* RECEPTION MODULE */}
-        <Route path="/reception" element={
-          <ProtectedRoute allowedRoles={['admin', 'receptionist', 'doctor']}>
-            <ReceptionLayout />
-          </ProtectedRoute>
-        }>
+        <Route 
+          path="/reception/*" 
+          element={<ProtectedReceptionLayout />}
+        >
           <Route index element={<ReceptionDashboard />} />
           <Route path="dashboard" element={<ReceptionDashboard />} />
           <Route path="patientsList" element={<ReceptionPatientList />} />
@@ -323,20 +394,18 @@ function App() {
         </Route>
 
         {/* MEDICAL DASHBOARD MODULE */}
-        <Route path="/medicaldashboard/*" element={
-          <ProtectedRoute allowedRoles={['admin', 'doctor', 'pharmacist']}>
-            <MedicalDashboard />
-          </ProtectedRoute>
-        } />
+        <Route 
+          path="/medicaldashboard/*" 
+          element={<ProtectedMedicalDashboard />}
+        />
 
         {/* LAB MANAGEMENT */}
-        <Route path="/lab-management/*" element={
-          <ProtectedRoute allowedRoles={['admin', 'lab', 'technician']}>
-            <LabManagementMain />
-          </ProtectedRoute>
-        } />
+        <Route 
+          path="/lab-management/*" 
+          element={<ProtectedLabManagement />}
+        />
 
-        {/* DEFAULT - Use RoleBasedRedirect component */}
+        {/* CATCH ALL ROUTE - Redirect based on role */}
         <Route path="*" element={<RoleBasedRedirect />} />
       </Routes>
 

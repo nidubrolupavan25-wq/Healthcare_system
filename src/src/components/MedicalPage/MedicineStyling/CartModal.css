@@ -1,0 +1,89 @@
+/* Overlay */
+.cart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* Modal Box */
+.cart-modal {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Heading */
+.cart-modal h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #004d40;
+}
+
+/* Cart items list */
+.cart-items-list {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.cart-items-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+/* Total */
+.cart-total {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Buttons */
+.cart-close-btn,
+.cart-clear-btn {
+  background-color: #00695c;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 10px 5px 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cart-close-btn:hover {
+  background-color: #00796b;
+}
+
+/* Clear Cart Button */
+.cart-clear-btn {
+  background-color: #ff5722;
+}
+
+.cart-clear-btn:hover {
+  background-color: #e64a19;
+}

@@ -1,0 +1,87 @@
+
+/* ===== Specialised Doctors ===== */
+.specialised-section {
+  margin-top: 40px;
+}
+
+.specialised-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.specialised-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.specialised-card {
+  width: 150px;
+  text-align: center;
+}
+
+.specialised-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.specialised-section {
+  padding: 50px 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.specialised-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.specialised-header h2 {
+  margin: 0;
+}
+
+.specialised-header .view-more {
+  text-decoration: none;
+  color: #28a745;
+  font-weight: 500;
+}
+
+.specialised-container {
+  display: flex;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.specialised-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  width: 250px;
+}
+
+.specialised-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.specialised-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.specialised-card h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.specialised-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

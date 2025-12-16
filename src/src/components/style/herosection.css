@@ -1,0 +1,70 @@
+.hero-section {
+  position: relative;
+  height: 420px;
+  background: #4caf50;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* LEFT IMAGE */
+.hero-image {
+  position: absolute;
+  left: 40px;
+  bottom: 0;
+  height: 360px;
+}
+
+/* ✅ CENTER CONTENT BLOCK */
+.hero-content {
+  margin: auto;                /* ✅ true centering */
+  max-width: 640px;            /* ✅ matches reference */
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
+/* LOGO */
+.hero-logo {
+  width: 44px;
+  margin-bottom: 10px;
+}
+
+/* TAGLINE */
+.hero-tagline {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 18px;
+}
+
+/* TITLE */
+.hero-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+/* DESCRIPTION */
+.hero-description {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  opacity: 0.95;
+}
+
+/* BUTTON */
+.hero-btn {
+  padding: 14px 34px;
+  border-radius: 32px;
+  background: rgba(255,255,255,0.25);
+  border: 2px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  background: rgba(255,255,255,0.35);
+}

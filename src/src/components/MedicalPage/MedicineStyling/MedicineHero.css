@@ -1,0 +1,39 @@
+.hero {
+  background-color: #00332e;
+  color: white;
+  text-align: center;
+  padding: 1.875rem 1.25rem;
+}
+
+.hero h1 {
+  font-size: 1.625rem;
+  margin-bottom: 0.9375rem;
+}
+
+/* Search Bar */
+.search-bar {
+  margin: 0 auto;
+  max-width: 37.5rem;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.9375rem;
+}
+
+.search-bar::before {
+  content: '🔍';
+  margin-right: 0.625rem;
+  color: #999;
+}
+
+.search-bar input {
+  border: none;
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.search-bar input:focus {
+  outline: none;
+}
